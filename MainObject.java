@@ -129,7 +129,7 @@ public abstract class MainObject extends JButton{
 		@Override
 		public void mouseMoved(MouseEvent e) {
 			// TODO Auto-generated method stub
-			System.out.println("mouseMoved X:"+e.getX()+" Y:"+e.getY());
+//			System.out.println("mouseMoved X:"+e.getX()+" Y:"+e.getY());
 			
 			//滑鼠按住移動到其他物件上
 //			if(current_obj != main_GUI.canvas_area.pressed_obj) {
