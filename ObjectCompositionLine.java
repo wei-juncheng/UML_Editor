@@ -16,8 +16,9 @@ public class ObjectCompositionLine extends MainLine {
 		int[] pgx = {
 				super.end_obj.getLocation().x+super.end_port.x,
 				super.end_obj.getLocation().x+super.end_port.x+5,
-				super.end_obj.getLocation().x+super.end_port.x-5,
-				super.end_obj.getLocation().x+super.end_port.x
+				super.end_obj.getLocation().x+super.end_port.x,
+				super.end_obj.getLocation().x+super.end_port.x-5
+				
 				
 				
 		};
@@ -25,8 +26,9 @@ public class ObjectCompositionLine extends MainLine {
 		int[] pgy = {
 				super.end_obj.getLocation().y+super.end_port.y,
 				super.end_obj.getLocation().y+super.end_port.y+5,
-				super.end_obj.getLocation().y+super.end_port.y+5,
-				super.end_obj.getLocation().y+super.end_port.y+10
+				super.end_obj.getLocation().y+super.end_port.y+10,
+				super.end_obj.getLocation().y+super.end_port.y+5
+				
 		};
 		g.fillPolygon(pgx, pgy, 4);
 	}
