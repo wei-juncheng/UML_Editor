@@ -13,10 +13,10 @@ public class ObjectUseCase extends MainObject {
 		g.drawOval(0, 0, 150, 100);
 		
 		if(super.selected) {
-			g.fillRect(this.getWidth()/2, 0, super.connection_port_width ,super.connection_port_width);//北
-	        g.fillRect(this.getWidth()-super.connection_port_width, this.getHeight()/2,super.connection_port_width,super.connection_port_width);//東
-	        g.fillRect(this.getWidth()/2-super.connection_port_width, this.getHeight()-super.connection_port_width,super.connection_port_width,super.connection_port_width);//南
-	        g.fillRect(0, this.getHeight()/2,super.connection_port_width,super.connection_port_width);//西
+			g.fillRect(super.north_port.x, super.north_port.y, super.connection_port_width ,super.connection_port_width);
+	        g.fillRect(super.east_port.x-super.connection_port_width, super.east_port.y, super.connection_port_width,super.connection_port_width);
+	        g.fillRect(super.south_port.x, super.south_port.y-super.connection_port_width ,super.connection_port_width,super.connection_port_width);
+	        g.fillRect(super.west_port.x, super.west_port.y, super.connection_port_width,super.connection_port_width);
 		}
 
 	}

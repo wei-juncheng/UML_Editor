@@ -39,7 +39,15 @@ public class MainButton extends JButton{
 	}
 	
 	public void CanvasClickEvent(int x, int y) {}
+	
 	public void CanvasPressEvent(int x, int y) {}
+	public void CanvasPressEvent(int x, int y, MainObject obj) {} //from object event
+	
 	public void CanvasReleaseEvent(int x, int y) {}
+	public void CanvasReleaseEvent(int x, int y , MainObject obj) {}//from object event
+	
+	public void CanvasEnterEvent(int x, int y , MainObject obj) {}//from object event
+	
+	public void CanvasExitEvent(int x, int y , MainObject obj) {}//from object event
 
 }
