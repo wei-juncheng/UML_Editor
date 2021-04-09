@@ -43,10 +43,10 @@ public class CanvasArea extends JPanel {
 		super.paintComponent(g);
 		
 //		System.out.println(this.main_GUI.canvas_area.getComponents().length);
-//		int z_order = 0;
+//		int z_order = this.main_GUI.canvas_area.getComponents().length-1;
 //		for(Component obj: this.main_GUI.canvas_area.getComponents()) {
 //			System.out.println(obj.getClass().getName()); 
-//			this.main_GUI.canvas_area.setComponentZOrder(obj, z_order++);
+//			this.main_GUI.canvas_area.setComponentZOrder(obj, z_order--);
 //		}
 //		System.out.println("==");
 		

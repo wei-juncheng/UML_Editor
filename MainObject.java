@@ -107,7 +107,17 @@ public abstract class MainObject extends JButton{
 		public void mouseDragged(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
+			
+			
 			if(main_GUI.current_clicked_button.getClass().getName()=="Select") {
+				if(main_GUI.selected_object.get(0) != current_obj) {
+					main_GUI.clear_selected_list();
+					//紀錄點擊物件的起始相對位置
+					current_obj.press_start_position_x = e.getX();
+					current_obj.press_start_position_y = e.getY();
+					main_GUI.selected_object.add(current_obj);
+				}
+				
 				for(MainObject obj: main_GUI.selected_object) {
 					obj.setLocation(obj.getLocation().x + e.getX()-current_obj.press_start_position_x, obj.getLocation().y +e.getY()-current_obj.press_start_position_y);
 				}
@@ -134,6 +144,8 @@ public abstract class MainObject extends JButton{
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
 			System.out.println("mousePressed X:"+e.getX()+" Y:"+e.getY());
+			
+			
 			
 			//紀錄點擊物件的起始相對位置
 			current_obj.press_start_position_x = e.getX();
