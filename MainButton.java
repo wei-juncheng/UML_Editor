@@ -13,7 +13,9 @@ public class MainButton extends JButton{
 		super(button_name);
 		this.addActionListener(new button_click_handler(this));
 		this.main_GUI = m;
-		setBackground(Color.black);
+//		setBackground(Color.black);
+		setContentAreaFilled(false);
+		setOpaque(true);
 
 	}
 	
@@ -26,9 +28,15 @@ public class MainButton extends JButton{
 		public void actionPerformed(ActionEvent e) {
 			for(MainButton button: main_GUI.button_list) {
 				button.setBackground(Color.WHITE);
-				System.out.println("set white!");
+//				System.out.println("set white!");
 			}
 			
+			clicked_button.setBackground(Color.GRAY);
+			
+			main_GUI.clear_selected_list();
+			main_GUI.canvas_area.pressed_obj = null;
+			main_GUI.canvas_area.temp_line = null;
+			main_GUI.canvas_area.entered_obj = null;
 			
 			main_GUI.current_clicked_button = clicked_button;
 			

@@ -29,7 +29,7 @@ public class AssociationLine extends MainButton {
 			//給他終點就可以產生線段了
 			main_GUI.canvas_area.temp_line.end_obj = obj;
 			main_GUI.canvas_area.temp_line.end_port = obj.get_nearest_port(x, y);
-		}else if(main_GUI.canvas_area.pressed_obj!=null && main_GUI.canvas_area.pressed_obj == obj && main_GUI.canvas_area.temp_line.end_obj != null){
+		}else if(main_GUI.canvas_area.pressed_obj!=null && main_GUI.canvas_area.pressed_obj == obj && main_GUI.canvas_area.temp_line != null && main_GUI.canvas_area.temp_line.end_obj != null){
 			// 進入原本的物件，association線段將不會建立
 			//把終點拿掉，他就不會畫線段了
 			main_GUI.canvas_area.temp_line.end_obj = null;

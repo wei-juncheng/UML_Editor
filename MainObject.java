@@ -2,6 +2,7 @@ import javax.swing.Action;
 
 import javax.swing.Icon;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
 import javax.swing.event.MouseInputListener;
 
 import java.util.ArrayList;
@@ -30,13 +31,16 @@ public abstract class MainObject extends JButton{
 	public ArrayList<connection_port> ports;
 	connection_port north_port, east_port, south_port, west_port;
 
-	public MainObject(GUI m, int x, int y, int width, int heigh) {
-		super();
+	public MainObject(String btn_name, GUI m, int x, int y, int width, int heigh) {
+		super(btn_name);
+		setContentAreaFilled(false);
 		setOpaque(false);
         setBorderPainted(false);
 		setBounds(x , y ,width,heigh);
 		setForeground(Color.BLACK);
-//		setVerticalAlignment(SwingConstants.TOP);
+		setBackground(Color.WHITE);
+//		.set
+		setVerticalAlignment(SwingConstants.TOP);
 		this.main_GUI = m;
 		this.addMouseListener(new CanvasMouseEvent(this));
 		this.addMouseMotionListener(new CanvasMouseEvent(this));
@@ -81,9 +85,6 @@ public abstract class MainObject extends JButton{
 		}
 		
 		return nearest_port;
-		
-		
-		
 		
 	}
 	

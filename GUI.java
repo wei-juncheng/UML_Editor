@@ -1,5 +1,7 @@
-import javax.swing.*;  
+import javax.swing.*;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.GridLayout;
 import java.awt.Container;
 import java.awt.BorderLayout;
@@ -8,17 +10,18 @@ import java.util.ArrayList;
 
 public class GUI {
 	
-	JFrame f;
+	public JFrame f;
 	MainButton current_clicked_button;
 	CanvasArea canvas_area;
 	public ArrayList<MainObject> selected_object;
 	
 	public MainButton button_list[] = {
 			new Select("select", this),
-			new AssociationLine("association", this),
-			new GeneralizationLine("generalization", this),
+			new AssociationLine("association line", this),
+			new GeneralizationLine("generalization line", this),
+			new CompositionLine("composition line", this),
 			new Class("class",this),
-			new UseCase("usecase", this)
+			new UseCase("use case", this)
 	};
 
 	public static void main(String[] args) {
@@ -34,6 +37,40 @@ public class GUI {
 		f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		selected_object = new ArrayList<MainObject>();
 		draw_basic_panel();
+		draw_menu();
+		
+	}
+	
+	private void draw_menu() {
+		JMenuBar menu_bar = new JMenuBar();
+		JMenu menu = new JMenu("Edit");
+		JMenuItem item1 = new JMenuItem("Change Name");
+		item1.addActionListener(new change_name_handler());
+		JMenuItem item2 = new JMenuItem("Group");
+		JMenuItem item3 = new JMenuItem("UnGroup");
+		
+		menu.add(item1);
+		menu.add(item2);
+		menu.add(item3);
+		
+		menu_bar.add(menu);
+		f.add(menu_bar, BorderLayout.NORTH);
+		
+	}
+	
+	class change_name_handler implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if(selected_object.size()<1)
+				return;
+			String new_name = JOptionPane.showInputDialog(f, "Change name", "Change Object Name");
+//			System.out.println(new_name);
+			if(new_name!=null)
+				selected_object.get(0).setText(new_name);
+			
+		}
 		
 	}
 	

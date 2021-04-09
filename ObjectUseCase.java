@@ -3,7 +3,7 @@ import java.awt.Graphics;
 public class ObjectUseCase extends MainObject {
 
 	public ObjectUseCase(GUI m, int x, int y) {
-		super(m, x, y, 151,101);
+		super("Use case",m, x, y, 151,101);
 		// TODO Auto-generated constructor stub
 	}
 

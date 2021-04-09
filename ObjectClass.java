@@ -4,14 +4,17 @@ import java.awt.Graphics;
 public class ObjectClass extends MainObject {
 
 	public ObjectClass(GUI m, int x, int y) {
-		super(m, x, y,101,151);
+		super("class", m, x, y,120,150);
 		
 	}
 	
 	@Override
 	public void draw(Graphics g) {
+//		g.setColor(Color.WHITE);
+//    	g.fillRect(0, 0, 120, 150);
+		g.setColor(Color.BLACK);
         for(int j = 0 ; j < 3 ; j++) {
-        	g.drawRect(0,50*j, 100, 50);
+        	g.drawRect(0,50*j, 120, 50);
         }
         
         if(super.selected) {

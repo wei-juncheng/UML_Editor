@@ -1,7 +1,9 @@
 import java.awt.LayoutManager;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Graphics;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import java.util.ArrayList;
@@ -27,18 +29,27 @@ public class CanvasArea extends JPanel {
 		
 		addMouseListener(new CanvasEvent(m));
 		
-		TimerTask repeatRepaint= new TimerTask(){
+		TimerTask TimeRepaint= new TimerTask(){
 	        @Override
 	        public void run() {
 	            repaint();
 	        }   
 	    };
 	    timer = new Timer();
-	    timer.schedule(repeatRepaint,0,50);
+	    timer.schedule(TimeRepaint,0,50);
 	}
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		
+//		System.out.println(this.main_GUI.canvas_area.getComponents().length);
+//		int z_order = 0;
+//		for(Component obj: this.main_GUI.canvas_area.getComponents()) {
+//			System.out.println(obj.getClass().getName()); 
+//			this.main_GUI.canvas_area.setComponentZOrder(obj, z_order++);
+//		}
+//		System.out.println("==");
+		
 		g.setColor(Color.BLACK);
 		if(this.temp_line!=null && this.temp_line.end_obj!=null)
 			this.temp_line.draw(g);

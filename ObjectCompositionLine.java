@@ -19,8 +19,6 @@ public class ObjectCompositionLine extends MainLine {
 				super.end_obj.getLocation().x+super.end_port.x,
 				super.end_obj.getLocation().x+super.end_port.x-5
 				
-				
-				
 		};
 		
 		int[] pgy = {
