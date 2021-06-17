@@ -30,6 +30,7 @@ public abstract class MainObject extends JButton{
 	int press_start_position_x, press_start_position_y;
 	public ArrayList<connection_port> ports;
 	connection_port north_port, east_port, south_port, west_port;
+	public CompositeGroup group_belong = null; //belong to which group
 
 	public MainObject(String btn_name, GUI m, int x, int y, int width, int heigh) {
 		super(btn_name);
@@ -99,6 +100,14 @@ public abstract class MainObject extends JButton{
 		
 		public void mouseClicked(MouseEvent event) {
 			main_GUI.clear_selected_list();
+
+			// click on group element
+			if(current_obj.group_belong!=null){
+				CompositeGroup root_group = CompositeGroup.get_root_group(current_obj.group_belong);
+				current_obj.group_belong.select_all_object_relative(root_group);
+				return;
+			}
+
 			main_GUI.selected_object.add(current_obj);
 			System.out.println("mouseClicked selected_object.size():"+main_GUI.selected_object.size());
 		}

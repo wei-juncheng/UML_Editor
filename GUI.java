@@ -14,6 +14,7 @@ public class GUI {
 	MainButton current_clicked_button;
 	CanvasArea canvas_area;
 	public ArrayList<MainObject> selected_object;
+	int group_id_count = 0;
 	
 	public MainButton button_list[] = {
 			new Select("select", this),
@@ -47,6 +48,7 @@ public class GUI {
 		JMenuItem item1 = new JMenuItem("Change Name");
 		item1.addActionListener(new change_name_handler());
 		JMenuItem item2 = new JMenuItem("Group");
+		item2.addActionListener(new group_handler());
 		JMenuItem item3 = new JMenuItem("UnGroup");
 		
 		menu.add(item1);
@@ -72,6 +74,35 @@ public class GUI {
 			
 		}
 		
+	}
+
+	class group_handler implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			if(selected_object.size()<1)
+				return;
+				
+			init_group();
+			
+		}
+	}
+
+	public void init_group(){
+
+		CompositeGroup group = new CompositeGroup(group_id_count++, this);
+		for (MainObject obj : selected_object) {
+			
+			// 這個物件不屬於任何Group
+			if (obj.group_belong == null) {
+				group.add_plain_obj(obj);
+			}
+			//這個物件有屬於某個Group，那就要把他祖宗十八代全部加進這個新的Group
+			else{
+				group.add_sub_group(obj.group_belong);
+			}
+			
+		}
 	}
 	
 	private void draw_basic_panel() {
