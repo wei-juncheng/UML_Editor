@@ -54,10 +54,11 @@ public class Select extends MainButton{
 				if(obj_main_object.group_belong!=null){
 					CompositeGroup root_group = CompositeGroup.get_root_group(obj_main_object.group_belong);
 					obj_main_object.group_belong.select_all_object_relative(root_group);
-					continue;
+				}else{
+
+					main_GUI.selected_object.add(obj_main_object);
 				}
 
-				main_GUI.selected_object.add(obj_main_object);
 
 			}
 		}

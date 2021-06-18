@@ -119,17 +119,22 @@ public abstract class MainObject extends JButton{
 			
 			
 			if(main_GUI.current_clicked_button.getClass().getName()=="Select") {
-				if(main_GUI.selected_object.get(0) != current_obj) {
+				
+				// 如果使用者點擊A物件，卻跑到B物件上面去拖曳
+				if(!main_GUI.selected_object.contains(current_obj) ) {
+					System.out.println("使用者點擊A物件，卻跑到B物件上面去拖曳");
 					main_GUI.clear_selected_list();
 					//紀錄點擊物件的起始相對位置
 					current_obj.press_start_position_x = e.getX();
 					current_obj.press_start_position_y = e.getY();
 					main_GUI.selected_object.add(current_obj);
 				}
-				
+				System.out.println("main_GUI.selected_object: ");
 				for(MainObject obj: main_GUI.selected_object) {
+					System.out.println(obj);
 					obj.setLocation(obj.getLocation().x + e.getX()-current_obj.press_start_position_x, obj.getLocation().y +e.getY()-current_obj.press_start_position_y);
 				}
+				System.out.println("=====");
 			}
 			
 			
@@ -186,7 +191,7 @@ public abstract class MainObject extends JButton{
 //				main_GUI.canvas_area.entered_obj = current_obj;
 //				main_GUI.current_clicked_button.CanvasEnterEvent(e.getX(), e.getY(), current_obj);
 //			}
-			System.out.println("mouseEnter X:"+e.getX()+" Y:"+e.getY());
+			// System.out.println("mouseEnter X:"+e.getX()+" Y:"+e.getY());
 			
 		}
 

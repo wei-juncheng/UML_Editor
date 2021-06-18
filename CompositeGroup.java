@@ -46,10 +46,13 @@ public class CompositeGroup {
 	}
 
 	public void select_all_object_relative(CompositeGroup obj_group_belong){
+		System.out.println("select_all_object_relative: ");
 		// 把這個Group的Plain Object也Select起來
 		for (MainObject obj : obj_group_belong.plain_obj) {
-			System.out.println(obj);
-			this.main_GUI.selected_object.add(obj);
+			// 如果selected_object裡面沒有加過這個物件
+			if(!this.main_GUI.selected_object.contains(obj)){
+				this.main_GUI.selected_object.add(obj);
+			}
 		}
 
 		// 往下檢查所有的sub Group，把裡面的Plain Object也Select起來
