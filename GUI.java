@@ -50,6 +50,7 @@ public class GUI {
 		JMenuItem item2 = new JMenuItem("Group");
 		item2.addActionListener(new group_handler());
 		JMenuItem item3 = new JMenuItem("UnGroup");
+		item3.addActionListener(new ungroup_handler());
 		
 		menu.add(item1);
 		menu.add(item2);
@@ -80,10 +81,43 @@ public class GUI {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
-			if(selected_object.size()<1)
+			if(selected_object.size()<=1)
 				return;
 				
 			init_group();
+			
+		}
+	}
+
+	class ungroup_handler implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			if(selected_object.size()<1)
+				return;
+				
+			CompositeGroup root = CompositeGroup.get_root_group(selected_object.get(0).group_belong);
+			if(root==null){
+				return;
+			}
+
+			for (MainObject obj : selected_object) {
+				// 物件的group_belong有東西
+				if (obj.group_belong!=null) {
+					//取得這個物件的root group
+					CompositeGroup obj_root = CompositeGroup.get_root_group(obj.group_belong);
+					if(obj_root!=root){
+						return;
+					}
+				}else{
+					//如果有物件沒有Group，那就不能按下ungroup按鈕
+					return;
+				}
+
+
+			}
+			System.out.println("執行ungroup");
+			CompositeGroup.decomposite_latest_group(root);
 			
 		}
 	}

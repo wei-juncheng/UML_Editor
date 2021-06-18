@@ -38,7 +38,7 @@ public class CompositeGroup {
 
 
 	public static CompositeGroup get_root_group(CompositeGroup group){
-		if (group.parent == null) {
+		if (group==null || group.parent == null) {
 			return group;
 		}
 
@@ -59,6 +59,47 @@ public class CompositeGroup {
 		for (CompositeGroup sub_group : obj_group_belong.sub_group) {
 			select_all_object_relative(sub_group);
 		}
+
+
+	}
+
+	//解構掉這個物件所屬Group的最後一層(往下找)
+	public static CompositeGroup decomposite_latest_group(CompositeGroup obj_group){
+		
+		// 找到最底層Group了！
+		if (obj_group.sub_group.size()<1) {
+			System.out.println("找到最底層Group了！");
+			//把所有的plain object釋放掉
+			for (MainObject obj : obj_group.plain_obj) {
+				obj.group_belong = null;
+			}
+			
+			// 把sub group都解散。（把它們的parent設回null）
+			// maybe 無用？
+			for (CompositeGroup group : obj_group.sub_group) {
+				group.parent = null;
+			}
+			
+			// 如果他有上層group，把這個group從上層的sub_group的ArrayList裡面刪掉
+			if (obj_group.parent!=null) {
+				int index = obj_group.parent.sub_group.indexOf(obj_group);
+				
+				// Not found
+				if (index<0) {
+					System.out.println("沒在上層的sub_group裡面找到");
+				}
+
+				obj_group.parent.sub_group.remove(index);
+			}
+		}
+
+		for (CompositeGroup group : obj_group.sub_group) {
+			System.out.println("遞迴往下！");
+			return decomposite_latest_group(group);
+		}
+
+		return obj_group;
+		
 
 
 	}
